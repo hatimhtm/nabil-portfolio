@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NM-01 · Hope's Assistant — Nabil Mouzoun</title>
+  <meta name="description" content="Case NM-01: how Nabil Mouzoun originated Hope's Assistant, an AI-assisted desktop app that automates a New York clinic's double-entry loop." />
+  <meta property="og:title" content="NM-01 · Hope's Assistant — Nabil Mouzoun" />
+  <meta property="og:description" content="Case NM-01: how Nabil Mouzoun originated Hope's Assistant, an AI-assisted desktop app that automates a New York clinic's double-entry loop." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="/assets/og.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="%230b1626"/><path d="M14 44 L26 30 L34 36 L50 18" fill="none" stroke="%2319b57a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
+</head>
+<body>
+
+  <div class="topbar">
+    <span><b>NM</b> · EQUITY RESEARCH — PERSONAL COVERAGE DESK</span>
+    <span>REPORT DATE · <span data-date>—</span></span>
+  </div>
+
+  <header class="nav">
+    <a class="nav__brand" href="index.html" data-nav>Mouzoun <span class="mono">NM <i class="nav__tick">▲</i></span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html" data-nav>Overview</a>
+      <a href="work.html" data-nav aria-current="page">Coverage</a>
+      <a href="profile.html" data-nav>Profile</a>
+    </nav>
+    <a class="nav__cta" href="mailto:mouzounn1@gmail.com">Request the memo</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Menu">
+      <a href="index.html" data-nav><em>P.1</em> Overview</a>
+      <a href="work.html" data-nav><em>P.2</em> Coverage</a>
+      <a href="profile.html" data-nav><em>P.7</em> Profile</a>
+      <a href="mailto:mouzounn1@gmail.com"><em>✉</em> mouzounn1@gmail.com</a>
+    </nav>
+    <p class="menu__foot mono">NM · EQUITY RESEARCH — NEW YORK</p>
+  </div>
+
+  <main class="page">
+
+    <section class="casehero">
+      <div class="wrap">
+        <p class="crumb reveal"><a href="work.html" data-nav>COVERAGE</a> / NM-01 · FLAGSHIP</p>
+        <h1 class="reveal">Hope's Assistant</h1>
+        <p class="casehero__sub reveal">A New York mental-health practice was paying twice for
+        every patient visit — once in care, once in re-keyed admin. NM originated the
+        AI-assisted product that closed the loop.</p>
+        <div class="casehero__chips reveal">
+          <span class="chip chip--gold">FLAGSHIP CASE</span>
+          <span class="chip">HEALTHCARE OPERATIONS</span>
+          <span class="chip">APPLIED AI</span>
+          <span class="chip chip--green">▲ SHIPPED &amp; IN DAILY USE</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="metrics reveal">
+        <div class="metric"><div class="metric__v">2 → 1</div><div class="metric__k">Disconnected systems → one automated flow</div></div>
+        <div class="metric"><div class="metric__v">AUTO <span class="up">▲</span></div><div class="metric__k">Runs itself on schedule — reads, maps, and books everything</div></div>
+        <div class="metric"><div class="metric__v">1-CLICK</div><div class="metric__k">Manual mode — pick a day, press run, done</div></div>
+        <div class="metric"><div class="metric__v">0</div><div class="metric__k">Billing codes the AI may invent — hard rule</div></div>
+      </div>
+
+      <div class="casebody">
+        <div class="casebody__main">
+          <h2 class="reveal"><span class="mono">1.0</span> The situation</h2>
+          <p class="reveal">The practice ran on two platforms that never spoke: patient visits
+          lived in the records system, billing and scheduling in another. Every day, a staff
+          member re-keyed every visit by hand — find the patient, read which doctor saw them,
+          work out the right supervising doctor, attach the correct billing codes, book it
+          again, verify. Slow, error-prone, and invisible: <strong>the kind of cost that never
+          makes it into a meeting</strong>, because no one is hired to look at it. That entire
+          job is what Hope's Assistant deleted.</p>
+
+          <h2 class="reveal"><span class="mono">2.0</span> What NM did</h2>
+          <p class="reveal">He identified the loop, quantified the waste, conceived the product,
+          and defined its behavior end to end: <strong>read each visit → map the diagnosing
+          doctor to the correct supervising doctor and billing codes → book the matching
+          appointment automatically</strong>. Two decisions in the spec are distinctly his:</p>
+          <p class="reveal"><strong>Trust is a feature.</strong> Clinic staff don't trust
+          invisible software with billing. So the app performs every action with a visible,
+          narrated cursor on screen — the operator watches it find, type, and click. Adoption
+          was designed in, not hoped for.</p>
+          <p class="reveal"><strong>The AI has a hard ceiling.</strong> The assistant's AI may
+          organize information — turning free-text doctor notes into a clean doctor→codes
+          roster — but it may <em>never invent a billing code</em>. Every AI output is
+          re-validated deterministically before it touches the schedule. In a healthcare
+          workflow, that guardrail is the product.</p>
+          <p class="reveal">He then partnered with a software engineer who built the system to
+          that spec, while NM owned the workflow design, the mapping logic, and the client
+          relationship.</p>
+
+          <h2 class="reveal"><span class="mono">3.0</span> How it works</h2>
+          <div class="flow reveal" aria-label="System flow: records platform, engine, scheduling platform">
+            <div class="flow__node"><b>RECORDS PLATFORM</b><span>each patient visit:<br/>name · date · diagnosing doctor</span></div>
+            <span class="flow__link"></span>
+            <div class="flow__node flow__node--hot"><b>THE ENGINE</b><span>reads visits · maps doctor →<br/>supervisor + codes · AI re-validated</span></div>
+            <span class="flow__link"></span>
+            <div class="flow__node"><b>SCHEDULING PLATFORM</b><span>coded appointment booked<br/>under the correct doctor ✓</span></div>
+          </div>
+          <p class="reveal">The assistant runs <strong>fully unattended on a schedule</strong>:
+          at the set time it opens the records system itself, scrapes every visit, resolves
+          each doctor and billing code, and books the day end to end — no staff action at any
+          point. Prefer to drive? <strong>Manual mode is one click</strong>: pick the day,
+          press run, and watch it work. A dry-run option can also preview a full day's plan
+          before committing — the same instinct as checking a trade ticket before sending
+          it.</p>
+
+          <h2 class="reveal"><span class="mono">4.0</span> Why this case leads the book</h2>
+          <p class="reveal">Because it's the analyst's job in miniature: <strong>find the
+          mispriced thing</strong> (hours of skilled labor spent on re-keying),
+          <strong>define the trade</strong> (a product spec with the right guardrails), and
+          <strong>see it through to execution</strong> (shipped, adopted, still running). The
+          domain happened to be healthcare operations. The skill is transferable to any desk
+          that pays for clear thinking about where value leaks.</p>
+          <blockquote class="pull">A report nobody acts on is noise with formatting. A product a
+          clinic actually runs every day — that's a conclusion someone acted on.</blockquote>
+        </div>
+
+        <aside class="caseside">
+          <div class="factbox reveal">
+            <div class="factbox__head">CASE FILE — NM-01</div>
+            <dl>
+              <div><dt>CLIENT</dt><dd>New York mental-health practice</dd></div>
+              <div><dt>FORM</dt><dd>AI-assisted macOS desktop app</dd></div>
+              <div><dt>NM'S SEAT</dt><dd><b>Product originator &amp; strategy lead</b> — workflow, mapping logic, trust design, client experience</dd></div>
+              <div><dt>BUILT WITH</dt><dd>A software engineer, to NM's spec</dd></div>
+              <div><dt>GUARDRAIL</dt><dd>AI never invents a billing code; deterministic re-validation on every output</dd></div>
+              <div><dt>STATUS</dt><dd><span class="up">▲ Shipped · in daily production use</span></dd></div>
+              <div><dt>PERIOD</dt><dd>2026 — present</dd></div>
+            </dl>
+          </div>
+          <div class="factbox reveal">
+            <div class="factbox__head">SKILLS EVIDENCED</div>
+            <dl>
+              <div><dt>ANALYSIS</dt><dd>Cost discovery in an unexamined workflow</dd></div>
+              <div><dt>PRODUCT</dt><dd>Spec writing, guardrail design, adoption thinking</dd></div>
+              <div><dt>CLIENT</dt><dd>Healthcare stakeholder management, end to end</dd></div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <nav class="pn" aria-label="Case navigation">
+      <a href="work.html" data-nav><span class="mono">← BACK</span><b>Coverage universe</b></a>
+      <a href="designmall.html" data-nav><span class="mono">NEXT CASE · NM-02 →</span><b>Design-Mall</b></a>
+    </nav>
+
+  </main>
+
+  <footer class="foot">
+    <p class="foot__disc"><b>Case disclosure.</b> Engineering credit belongs to the developer
+    who built the system; the problem discovery, product definition, guardrail design, and
+    client ownership described here are NM's. The clinic's identity is withheld for privacy —
+    verifiable on request.</p>
+    <div class="foot__grid">
+      <nav class="foot__nav" aria-label="Footer">
+        <a href="index.html" data-nav>OVERVIEW</a>
+        <a href="work.html" data-nav>COVERAGE</a>
+        <a href="profile.html" data-nav>PROFILE</a>
+      </nav>
+      <a class="foot__mail" href="mailto:mouzounn1@gmail.com">MOUZOUNN1@GMAIL.COM</a>
+      <span class="foot__page">NM-IC · P.3 / 7 · © <span data-year>2026</span></span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
