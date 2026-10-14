@@ -24,7 +24,7 @@ Every fact follows Nabil's résumé.
 
 - Degree: B.S. Business Administration, concentration in Finance, Mercy University, expected December 2026.
 - GPA 3.93 / 4.00 at Mercy. Write it as 3.93.
-- Dean's List, four semesters: Al Akhawayn (Fall 2022), Monroe (Spring 2024), Mercy (Fall 2025, Spring 2026).
+- Dean's List, eight semesters, across the three universities.
 - Prometheus Trading (Jun–Aug 2026) is shown as a **project** (NM-05), not in the experience ledger.
 
 ## Exhibits

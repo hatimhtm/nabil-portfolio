@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>NM-01 · Hope's Assistant · Nabil Mouzoun</title>
-  <meta name="description" content="Case NM-01: how Nabil Mouzoun originated Hope's Assistant, an AI-assisted desktop app that automates a New York clinic's double-entry loop." />
+  <meta name="description" content="Case NM-01: how I originated Hope's Assistant, an AI-assisted desktop app that automates a New York clinic's double-entry loop." />
   <meta name="theme-color" content="#f5f2ea" />
   <meta property="og:title" content="NM-01 · Hope's Assistant · Nabil Mouzoun" />
-  <meta property="og:description" content="Case NM-01: how Nabil Mouzoun originated Hope's Assistant, an AI-assisted desktop app that automates a New York clinic's double-entry loop." />
+  <meta property="og:description" content="Case NM-01: how I originated Hope's Assistant, an AI-assisted desktop app that automates a New York clinic's double-entry loop." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2.0" />
+  <link rel="stylesheet" href="styles.css?v=2.1" />
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="%230b1626"/><path d="M14 44 L26 30 L34 36 L50 18" fill="none" stroke="%2319b57a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
   <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -31,14 +31,14 @@
 
   <header class="nav" id="nav">
     <a class="nav__brand" href="index.html" data-nav>Mouzoun <span class="mono">NM <i class="nav__tick">▲</i></span></a>
-    <span class="nav__quote" aria-hidden="true"><b>STRONG HIRE</b> <i class="up">▲</i><span class="nav__quote-more"> · GPA 3.93 · DEAN'S LIST ×4</span></span>
+    <span class="nav__quote" aria-hidden="true"><b>STRONG HIRE</b> <i class="up">▲</i><span class="nav__quote-more"> · GPA 3.93 · DEAN'S LIST ×8</span></span>
     <nav class="nav__links" aria-label="Primary">
       <a href="index.html" data-nav><em>01</em>Overview</a>
       <a href="work.html" data-nav aria-current="page"><em>02</em>Coverage</a>
       <a href="profile.html" data-nav><em>03</em>Profile</a>
     </nav>
     <button class="nav__cmd" type="button" data-cmd-open aria-label="Open the command line">GO TO<kbd>/</kbd></button>
-    <a class="nav__cta" href="mailto:mouzounn1@gmail.com">Email Nabil</a>
+    <a class="nav__cta" href="mailto:mouzounn1@gmail.com">Email me</a>
   </header>
 
   <main class="page" id="main">
@@ -48,7 +48,7 @@
       <div class="wrap">
         <p class="crumb reveal"><a href="work.html" data-nav>COVERAGE</a> / NM-01 · FLAGSHIP</p>
         <h1 class="reveal">Hope's Assistant</h1>
-        <p class="casehero__sub reveal">A New York healthcare practice entered each patient visit twice, once in its records system and once in its scheduling system. Nabil specified the AI-assisted product that now makes the second entry.</p>
+        <p class="casehero__sub reveal">A New York healthcare practice entered each patient visit twice, once in its records system and once in its scheduling system. I specified the AI-assisted product that now makes the second entry.</p>
         <div class="casehero__chips reveal">
           <span class="chip chip--gold">FLAGSHIP CASE</span>
           <span class="chip">HEALTHCARE OPERATIONS</span>
@@ -71,11 +71,11 @@
           <h2 class="reveal"><span class="mono">1.0</span> The situation</h2>
           <p class="reveal">The practice kept patient visits in a records system and handled billing and scheduling in a second one, and the two did not share data. Each day a staff member re-keyed the day's visits by hand: find the patient, read which doctor saw them, work out the supervising doctor, attach the billing codes, book the appointment again and check it. <strong>The practice paid for that work in staff hours and in billing mistakes</strong>, and it had not measured either. Hope's Assistant now does that job.</p>
 
-          <h2 class="reveal"><span class="mono">2.0</span> What NM did</h2>
-          <p class="reveal">He spotted the double entry, estimated what it cost, and wrote the specification for a product to replace it: <strong>read each visit → map the diagnosing doctor to the supervising doctor and billing codes → book the matching appointment</strong>. Two decisions in the specification came from him.</p>
+          <h2 class="reveal"><span class="mono">2.0</span> What I did</h2>
+          <p class="reveal">I spotted the double entry, estimated what it cost, and wrote the specification for a product to replace it: <strong>read each visit → map the diagnosing doctor to the supervising doctor and billing codes → book the matching appointment</strong>. Two decisions in the specification were mine.</p>
           <p class="reveal"><strong>Staff can watch it work.</strong> Clinic staff hesitate to hand billing to software they cannot see, so the app moves a visible cursor on screen and says what it is doing while the operator watches.</p>
           <p class="reveal"><strong>The AI cannot invent a billing code.</strong> The AI may organize information, for example by turning a doctor's free-text notes into a roster of doctors and codes. A fixed set of rules then checks each AI output before the app touches the schedule.</p>
-          <p class="reveal">A software engineer then built the system to that specification; Nabil kept the workflow design, the mapping logic and the client relationship.</p>
+          <p class="reveal">A software engineer then built the system to that specification; I kept the workflow design, the mapping logic and the client relationship.</p>
 
           <h2 class="reveal"><span class="mono">3.0</span> How it works</h2>
           <div class="flow reveal" aria-label="System flow: records platform, engine, scheduling platform">
@@ -88,7 +88,7 @@
           <p class="reveal">The assistant runs <strong>on a schedule with no one at the keyboard</strong>. At the set time it opens the records system, reads the day's visits, works out each doctor and billing code, and books the day. An operator can also run it by hand in <strong>one click</strong>: pick the day and press run. A dry run shows the full day's plan before the app books anything, the way a trader checks a ticket before sending it.</p>
 
           <h2 class="reveal"><span class="mono">4.0</span> Why this case comes first</h2>
-          <p class="reveal">This case comes first because it shows how Nabil works. He found <strong>skilled staff hours spent on re-keying</strong>, wrote <strong>a product specification with guardrails</strong>, and stayed with the project until <strong>the clinic ran it each day</strong>. A finance desk asks an analyst for the same three steps.</p>
+          <p class="reveal">This case comes first because it shows how I work. I found <strong>skilled staff hours spent on re-keying</strong>, wrote <strong>a product specification with guardrails</strong>, and stayed with the project until <strong>the clinic ran it each day</strong>. A finance desk asks an analyst for the same three steps.</p>
         </div>
 
         <aside class="caseside">
@@ -97,8 +97,8 @@
             <dl>
               <div><dt>CLIENT</dt><dd>New York healthcare practice</dd></div>
               <div><dt>FORM</dt><dd>AI-assisted macOS desktop app</dd></div>
-              <div><dt>NM'S SEAT</dt><dd><b>Product originator &amp; strategy lead</b>: workflow, mapping logic, client experience</dd></div>
-              <div><dt>BUILT WITH</dt><dd>A software engineer, to NM's spec</dd></div>
+              <div><dt>MY SEAT</dt><dd><b>Product originator &amp; strategy lead</b>: workflow, mapping logic, client experience</dd></div>
+              <div><dt>BUILT WITH</dt><dd>A software engineer, to my spec</dd></div>
               <div><dt>GUARDRAIL</dt><dd>The AI cannot invent a billing code. Fixed rules check each output.</dd></div>
               <div><dt>STATUS</dt><dd><span class="up">▲ Shipped · in daily production use</span></dd></div>
               <div><dt>PERIOD</dt><dd>2026 to present</dd></div>
@@ -124,7 +124,7 @@
   </main>
 
   <footer class="foot">
-    <p class="foot__disc"><b>Case disclosure.</b> A software engineer built the system and deserves the engineering credit; Nabil found the problem, defined the product, set its guardrails and managed the client. We withhold the clinic's name for privacy and can confirm it on request.</p>
+    <p class="foot__disc"><b>Case disclosure.</b> A software engineer built the system and deserves the engineering credit; I found the problem, defined the product, set its guardrails and managed the client. I withhold the clinic's name for privacy and can confirm it on request.</p>
     <div class="foot__grid">
       <nav class="foot__nav" aria-label="Footer">
         <a href="index.html" data-nav>OVERVIEW</a>
@@ -148,6 +148,6 @@
     <ul id="cmd-list" role="listbox"></ul>
   </dialog>
 
-  <script src="app.js?v=2.0" defer></script>
+  <script src="app.js?v=2.1" defer></script>
 </body>
 </html>

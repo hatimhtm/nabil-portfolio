@@ -47,21 +47,21 @@
      or a dated document; dl marks a Dean's List semester.
      ============================================================ */
   const D = [
-    { x: 2021.7,  l: "Enrolls at Al Akhawayn University" },
+    { x: 2021.7,  l: "Enrolled at Al Akhawayn University" },
     { x: 2022.7,  l: "Treasurer, Michlifen Golf & Country Club" },
     { x: 2022.78, l: "Head of Media, AUI Short Film Festival" },
     { x: 2022.97, l: "Dean's List, Al Akhawayn, Fall 2022", dl: true },
-    { x: 2023.05, l: "Co-founds Design-Mall" },
+    { x: 2023.05, l: "Co-founded Design-Mall" },
     { x: 2023.13, l: "Board member, Humanitarian Lions Club" },
     { x: 2024.05, l: "Delegate, Golden MUN, Marrakech" },
     { x: 2024.15, l: "Top 50 University Startup" },
     { x: 2024.22, l: "J-1 exchange at Monroe, New York" },
     { x: 2024.45, l: "Dean's List, Monroe, Spring 2024", dl: true },
     { x: 2024.7,  l: "Student leader, Guoji-Africa Center" },
-    { x: 2025.67, l: "Transfers to Mercy University" },
-    { x: 2025.75, l: "Starts consulting for China Global Study" },
+    { x: 2025.67, l: "Transferred to Mercy University" },
+    { x: 2025.75, l: "Started consulting for China Global Study" },
     { x: 2025.98, l: "Dean's List, Mercy, Fall 2025", dl: true },
-    { x: 2026.2,  l: "Hope's Assistant ships" },
+    { x: 2026.2,  l: "Hope's Assistant shipped" },
     { x: 2026.4,  l: "Dean's List, Mercy, Spring 2026", dl: true },
     { x: 2026.45, l: "Market research for Prometheus Trading" },
     { x: 2026.5,  l: "Volunteer, FIFA World Cup 2026" },
@@ -120,7 +120,7 @@
       const area = el("path", { class: "area", d: `${d} L ${sx(NOW)} ${bottom + 70} L ${sx(X0)} ${bottom + 70} Z` }, svg);
       const line = el("path", { class: "line", d }, svg);
       const ex = sx(NOW), ey = sy(LAST.y);
-      // the four Dean's List semesters sit on the line as filled pins
+      // Dean's List semesters sit on the line as filled pins
       const pins = behind ? [] : D.filter((p) => p.dl).map((p) => el("circle", { class: "pin is-dl", cx: sx(p.x), cy: sy(p.y), r: 4.5 }, svg));
       const halo = el("circle", { class: "halo", cx: ex, cy: ey, r: 5 }, svg);
       const dot = el("circle", { class: "dot", cx: ex, cy: ey, r: 6 }, svg);
@@ -182,7 +182,7 @@
     const sx = (v) => M.l + ((v - X0) / (X1 - X0)) * (W - M.l - M.r);
     const sy = (v) => H - M.b - (v / Y1) * (H - M.t - M.b);
     const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img",
-      "aria-label": `Stepped line chart: cumulative milestones, 1 in late 2021 rising to ${LAST.y} by autumn 2026. Four of them are Dean's List semesters.` }, traj);
+      "aria-label": `Stepped line chart: cumulative milestones, 1 in late 2021 rising to ${LAST.y} by autumn 2026. Filled points are Dean's List semesters.` }, traj);
 
     for (let y = 0; y <= Y1; y += 4) {
       el("line", { x1: M.l, x2: W - M.r, y1: sy(y), y2: sy(y), stroke: GRID }, svg);
@@ -380,15 +380,16 @@
      ============================================================ */
   const edu = document.getElementById("chart-education");
   if (edu) {
-    // dates as on the résumé; marks = Dean's List semesters as printed on each transcript;
+    // dates as on the résumé; dl = on the Dean's List there; marks = Dean's List semesters to cut
+    // into the bar as notches, each { x: year, l: short label } (none listed for now);
     // est = where the solid bar stops (today) before the expected finish
     const ROWS = [
       { from: 2021.7, to: 2025.4, c: "#3563b8", name: "AL AKHAWAYN UNIVERSITY · BUSINESS ADMINISTRATION", where: "IFRANE, MOROCCO",
-        marks: [{ x: 2022.9, l: "F22" }] },
+        dl: true, marks: [] },
       { from: 2024.2, to: 2024.97, c: "#b4552d", name: "MONROE UNIVERSITY · J-1 EXCHANGE", where: "NEW YORK, US",
-        marks: [{ x: 2024.4, l: "S24" }] },
+        dl: true, marks: [] },
       { from: 2025.67, to: 2026.97, c: "#0e7a57", name: "MERCY UNIVERSITY · B.S. BUSINESS ADMIN., FINANCE", where: "NEW YORK, US · EXP. DEC 2026",
-        marks: [{ x: 2025.9, l: "F25" }, { x: 2026.35, l: "S26" }], est: 2026.79 },
+        dl: true, marks: [], est: 2026.79 },
     ];
     const W = MOBILE ? 420 : 760, H = MOBILE ? 250 : 230, M = { t: 14, r: 16, b: 30, l: 16 };
     const NAME_FS = 9.5, SUB_FS = 8.6;
@@ -397,7 +398,7 @@
     const sx = (v) => M.l + ((v - E0) / (E1 - E0)) * (W - M.l - M.r);
     const rowY = (i) => M.t + 16 + i * (MOBILE ? 68 : 62);
     const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img",
-      "aria-label": "Timeline: Al Akhawayn 2021 to 2025, Monroe exchange in 2024, Mercy 2025 through expected December 2026, with four Dean's List marks." }, edu);
+      "aria-label": "Timeline: Al Akhawayn 2021 to 2025, Monroe exchange in 2024, Mercy 2025 through expected December 2026. On the Dean's List at each." }, edu);
 
     const yearStep = MOBILE ? 2 : 1;
     for (let yr = 2022; yr <= 2027; yr += yearStep) {
@@ -423,7 +424,8 @@
 
       // Labels start where the bar starts (at the left margin on mobile). Each row has its own
       // lane, so a label that would run past the right edge is anchored to that edge instead.
-      const honors = r.marks && r.marks.length ? "▲ DEAN'S LIST " + r.marks.map((m) => m.l).join(" · ") : "";
+      const terms = (r.marks || []).map((m) => m.l).join(" · ");
+      const honors = r.dl ? "▲ DEAN'S LIST" + (terms ? " " + terms : "") : "";
       const width = (s, fs) => s.length * fs * 0.66;   // Plex Mono advance 0.6em + 0.06em tracking
       const widest = Math.max(width(r.name, NAME_FS), width(r.where + honors, SUB_FS) + 12);
       const start = MOBILE ? M.l : sx(r.from);

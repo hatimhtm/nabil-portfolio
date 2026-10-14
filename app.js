@@ -216,7 +216,7 @@
       ["PRMT", "NM-05 · Prometheus Trading", "prometheus.html"],
       ["PROF", "Profile and fundamentals", "profile.html"],
       ["CERT", "Exhibit A · the Bulenox certificate", "profile.html#exhibits"],
-      ["MAIL", "Write to Nabil", "mailto:mouzounn1@gmail.com"],
+      ["MAIL", "Write to me", "mailto:mouzounn1@gmail.com"],
     ];
     let shown = [], at = 0;
     const draw = () => {
