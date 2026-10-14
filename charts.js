@@ -38,29 +38,40 @@
      ============================================================ */
   const traj = document.getElementById("chart-trajectory");
   if (traj) {
+    // every point is a line on the résumé or a dated document; dl marks a Dean's List semester
     const D = [
-      { x: 2021.7,  y: 1,  l: "Enroll — Al Akhawayn University" },
-      { x: 2022.5,  y: 2,  l: "Treasurer — Michlifen G&CC" },
-      { x: 2022.8,  y: 3,  l: "Lions Club — AUI chapter" },
-      { x: 2023.3,  y: 4,  l: "Co-found Design-Mall" },
-      { x: 2024.2,  y: 5,  l: "Top 50 University Startup" },
-      { x: 2024.65, y: 6,  l: "J-1 Exchange — Monroe, NYC" },
-      { x: 2024.95, y: 7,  l: "Dean's List — Winter 2024" },
-      { x: 2025.6,  y: 8,  l: "Transfer — Mercy University" },
-      { x: 2025.7,  y: 9,  l: "China Global Study consulting" },
-      { x: 2025.85, y: 10, l: "Intern — Prometheus Trading" },
-      { x: 2025.98, y: 11, l: "Dean's List — Fall 2025" },
-      { x: 2026.2,  y: 12, l: "Hope's Assistant ships" },
+      { x: 2021.7,  l: "Enroll — Al Akhawayn University" },
+      { x: 2022.7,  l: "Treasurer — Michlifen G&CC" },
+      { x: 2022.78, l: "Head of Media — AUI Short Film Festival" },
+      { x: 2022.97, l: "Dean's List — Al Akhawayn, Fall 2022", dl: true },
+      { x: 2023.05, l: "Co-found Design-Mall" },
+      { x: 2023.13, l: "Board member — Humanitarian Lions Club" },
+      { x: 2024.05, l: "Delegate — Golden MUN, Marrakech" },
+      { x: 2024.15, l: "Top 50 University Startup" },
+      { x: 2024.22, l: "J-1 Exchange — Monroe, NYC" },
+      { x: 2024.45, l: "Dean's List — Monroe, Spring 2024", dl: true },
+      { x: 2024.7,  l: "Student leader — Guoji-Africa Center" },
+      { x: 2025.67, l: "Transfer — Mercy University" },
+      { x: 2025.75, l: "China Global Study consulting" },
+      { x: 2025.98, l: "Dean's List — Mercy, Fall 2025", dl: true },
+      { x: 2026.2,  l: "Hope's Assistant ships" },
+      { x: 2026.4,  l: "Dean's List — Mercy, Spring 2026", dl: true },
+      { x: 2026.45, l: "Market research — Prometheus Trading" },
+      { x: 2026.5,  l: "Volunteer — FIFA World Cup 2026" },
+      { x: 2026.69, l: "Intern — High Quality Home Therapy" },
+      { x: 2026.73, l: "Trading qualification — Bulenox, 50K" },
     ];
+    D.forEach((p, i) => { p.y = i + 1; });
+    const LAST = D[D.length - 1];
     const W = MOBILE ? 420 : 760, H = MOBILE ? 300 : 320, M = { t: 20, r: 16, b: 34, l: MOBILE ? 30 : 40 };
-    const X0 = 2021.4, X1 = 2026.8, Y1 = 14;
+    const X0 = 2021.4, X1 = 2027.0, Y1 = 22;
     const FS = MOBILE ? 10.5 : 11;
     const sx = (v) => M.l + ((v - X0) / (X1 - X0)) * (W - M.l - M.r);
     const sy = (v) => H - M.b - (v / Y1) * (H - M.t - M.b);
     const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img",
-      "aria-label": "Stepped line chart: cumulative milestones, 1 in late 2021 rising to 12 by mid 2026." }, traj);
+      "aria-label": `Stepped line chart: cumulative milestones, 1 in late 2021 rising to ${LAST.y} by autumn 2026. Four of them are Dean's List semesters.` }, traj);
 
-    for (let y = 0; y <= Y1; y += 2) {
+    for (let y = 0; y <= Y1; y += 4) {
       el("line", { x1: M.l, x2: W - M.r, y1: sy(y), y2: sy(y), stroke: "rgba(245,242,234,0.07)" }, svg);
       el("text", { x: M.l - 7, y: sy(y) + 3, "text-anchor": "end", fill: AXIS,
         "font-family": "IBM Plex Mono", "font-size": FS - 1.5 }, svg).textContent = y;
@@ -73,20 +84,22 @@
     // stepped path (after)
     let d = `M ${sx(X0)} ${sy(0)} L ${sx(D[0].x)} ${sy(0)}`;
     D.forEach((p) => { d += ` L ${sx(p.x)} ${sy(p.y - 1)} L ${sx(p.x)} ${sy(p.y)}`; });
-    d += ` L ${sx(2026.72)} ${sy(12)}`;
+    d += ` L ${sx(2026.86)} ${sy(LAST.y)}`;
     const line = el("path", { d, fill: "none", stroke: "#19b57a", "stroke-width": 2,
       "stroke-linejoin": "round" }, svg);
     drawIn(line);
 
-    D.forEach((p) => el("circle", { cx: sx(p.x), cy: sy(p.y), r: 3.2, fill: "#0b1626",
-      stroke: "#19b57a", "stroke-width": 2 }, svg));
+    // a Dean's List semester is a filled point; everything else is hollow
+    D.forEach((p) => el("circle", { cx: sx(p.x), cy: sy(p.y), r: p.dl ? 4 : 3.2,
+      fill: p.dl ? "#19b57a" : "#0b1626", stroke: "#19b57a", "stroke-width": 2 }, svg));
 
-    // selective direct labels — three flags only (indices into D);
-    // DEAN'S sits left of its point so it can't touch the SHIPPED dot above-right
+    // selective direct labels — four flags only (indices into D). Each sits to the LEFT of
+    // its point: the line climbs to the right, so the room is always on the left.
     const FLAGS = [
-      [4, "TOP 50", "middle", 0, -14],
-      [10, "DEAN'S ×2", "end", -10, 4],
-      [11, "SHIPPED", "middle", 0, -14],
+      [3, "DEAN'S LIST", "end", -10, 4],
+      [7, "TOP 50", "end", -10, 4],
+      [14, "SHIPPED", "end", -10, 4],
+      [19, "CERTIFIED", "end", -10, 4],
     ];
     FLAGS.forEach(([i, txt, anchor, dx, dy]) => {
       const p = D[i];
@@ -184,18 +197,23 @@
      ============================================================ */
   const edu = document.getElementById("chart-education");
   if (edu) {
+    // dates as on the résumé; marks = Dean's List semesters as printed on each transcript;
+    // est = where the solid bar stops (today) before the expected finish
     const ROWS = [
-      { from: 2021.7, to: 2025.4, c: "#3563b8", name: "AL AKHAWAYN UNIVERSITY — BBA FOUNDATION", where: "IFRANE, MOROCCO" },
-      { from: 2024.65, to: 2025.4, c: "#b4552d", name: "MONROE COLLEGE — J-1 EXCHANGE", where: "NEW YORK, US", mark: { x: 2024.95, l: "DEAN'S LIST W24" } },
-      { from: 2025.6, to: 2027.4, c: "#0e7a57", name: "MERCY UNIVERSITY — B.S. FINANCE", where: "NEW YORK, US", mark: { x: 2025.95, l: "DEAN'S LIST F25" }, est: 2026.55 },
+      { from: 2021.7, to: 2025.4, c: "#3563b8", name: "AL AKHAWAYN UNIVERSITY — BUSINESS ADMINISTRATION", where: "IFRANE, MOROCCO",
+        marks: [{ x: 2022.9, l: "F22" }] },
+      { from: 2024.2, to: 2024.97, c: "#b4552d", name: "MONROE UNIVERSITY — J-1 EXCHANGE", where: "NEW YORK, US",
+        marks: [{ x: 2024.4, l: "S24" }] },
+      { from: 2025.67, to: 2026.97, c: "#0e7a57", name: "MERCY UNIVERSITY — B.S. BUSINESS ADMIN., FINANCE", where: "NEW YORK, US · EXP. DEC 2026",
+        marks: [{ x: 2025.9, l: "F25" }, { x: 2026.35, l: "S26" }], est: 2026.79 },
     ];
     const W = MOBILE ? 420 : 760, H = MOBILE ? 250 : 230, M = { t: 14, r: 16, b: 30, l: 16 };
     const NAME_FS = MOBILE ? 9.5 : 9.5, SUB_FS = MOBILE ? 8.6 : 8.6;
-    const X0 = 2021.4, X1 = 2027.6;
+    const X0 = 2021.4, X1 = 2027.25;
     const sx = (v) => M.l + ((v - X0) / (X1 - X0)) * (W - M.l - M.r);
     const rowY = (i) => M.t + 16 + i * (MOBILE ? 68 : 62);
     const svg = el("svg", { viewBox: `0 0 ${W} ${H}`, role: "img",
-      "aria-label": "Timeline: Al Akhawayn 2021 to 2025, Monroe exchange 2024 to 2025, Mercy 2025 through expected 2027, with two Dean's List marks." }, edu);
+      "aria-label": "Timeline: Al Akhawayn 2021 to 2025, Monroe exchange in 2024, Mercy 2025 through expected December 2026, with four Dean's List marks." }, edu);
 
     const yearStep = MOBILE ? 2 : 1;
     for (let yr = 2022; yr <= 2027; yr += yearStep) {
@@ -205,29 +223,28 @@
     }
     ROWS.forEach((r, i) => {
       const y = rowY(i);
-      // on mobile, anchor all text to the left margin so long names never overflow the plot
-      const tx = MOBILE ? M.l : sx(r.from);
-      const solidTo = r.est || r.to;
-      el("rect", { x: sx(r.from), y: y, width: sx(solidTo) - sx(r.from), height: 12,
+      // the full span first, faint; the part already done on top of it, solid
+      if (r.est) el("rect", { x: sx(r.from), y: y, width: sx(r.to) - sx(r.from), height: 12, rx: 4,
+        fill: r.c, opacity: 0.28 }, svg);
+      el("rect", { x: sx(r.from), y: y, width: sx(r.est || r.to) - sx(r.from), height: 12,
         rx: 4, fill: r.c }, svg);
-      if (r.est) {
-        el("rect", { x: sx(r.est), y: y, width: sx(r.to) - sx(r.est), height: 12, rx: 4,
-          fill: r.c, opacity: 0.28 }, svg);
-        el("text", { x: (sx(r.est) + sx(r.to)) / 2, y: y + 9, "text-anchor": "middle",
-          fill: "#45536e", "font-family": "IBM Plex Mono", "font-size": MOBILE ? 6.4 : 7.2,
-          "letter-spacing": "0.05em" }, svg).textContent = "EXP. 2027";
-      }
-      el("text", { x: tx, y: y - 6, fill: "#0e1b2c",
+      // Dean's List semesters: a paper-coloured mark cut into the bar, readable on all three colours
+      (r.marks || []).forEach((m) => el("path", { d: `M ${sx(m.x)} ${y + 2.5} l 4.5 7 h -9 z`, fill: "#fbf9f3" }, svg));
+
+      // Labels start where the bar starts (at the left margin on mobile). Each row has its own
+      // lane, so a label that would run past the right edge is anchored to that edge instead.
+      const honors = r.marks && r.marks.length ? "▲ DEAN'S LIST " + r.marks.map((m) => m.l).join(" · ") : "";
+      const width = (s, fs) => s.length * fs * 0.66;   // Plex Mono advance 0.6em + 0.06em tracking
+      const widest = Math.max(width(r.name, NAME_FS), width(r.where + honors, SUB_FS) + 12);
+      const start = MOBILE ? M.l : sx(r.from);
+      const fits = start + widest <= W - M.r;
+      const tx = fits ? start : W - M.r, anchor = fits ? "start" : "end";
+      el("text", { x: tx, y: y - 6, "text-anchor": anchor, fill: "#0e1b2c",
         "font-family": "IBM Plex Mono", "font-size": NAME_FS, "letter-spacing": "0.06em" }, svg).textContent = r.name;
-      el("text", { x: tx, y: y + 26, fill: "#67718c",
-        "font-family": "IBM Plex Mono", "font-size": SUB_FS, "letter-spacing": "0.06em" }, svg).textContent = r.where;
-      if (r.mark) {
-        el("path", { d: `M ${sx(r.mark.x)} ${y - 3} l 4.5 7 h -9 z`, fill: "#0e9f6e" }, svg);
-        // label sits after the where-text, never over it
-        const labelX = tx + r.where.length * (SUB_FS * 0.68) + 16;
-        el("text", { x: labelX, y: y + 26, fill: "#0a7d57",
-          "font-family": "IBM Plex Mono", "font-size": SUB_FS, "letter-spacing": "0.05em" }, svg).textContent = "▲ " + r.mark.l;
-      }
+      const sub = el("text", { x: tx, y: y + 26, "text-anchor": anchor, fill: "#67718c",
+        "font-family": "IBM Plex Mono", "font-size": SUB_FS, "letter-spacing": "0.06em" }, svg);
+      sub.textContent = r.where;
+      if (honors) el("tspan", { dx: 12, fill: "#0a7d57" }, sub).textContent = honors;
     });
   }
 

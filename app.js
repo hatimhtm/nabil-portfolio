@@ -76,16 +76,17 @@
   );
   $$(".reveal").forEach((el) => io.observe(el));
 
-  /* ---- counters ---- */
-  const fmt = (n) => n.toLocaleString("en-US");
+  /* ---- counters (a target written with decimals, like 3.93, counts up with them) ---- */
   const runCount = (el) => {
-    const target = parseInt(el.dataset.count, 10);
+    const target = parseFloat(el.dataset.count);
+    const places = (el.dataset.count.split(".")[1] || "").length;
+    const fmt = (n) => n.toLocaleString("en-US", { minimumFractionDigits: places, maximumFractionDigits: places });
     if (reduced) { el.textContent = fmt(target); return; }
     const t0 = performance.now();
     const dur = 1300;
     const step = (t) => {
       const p = Math.min((t - t0) / dur, 1);
-      el.textContent = fmt(Math.round((1 - Math.pow(1 - p, 3)) * target));
+      el.textContent = fmt((1 - Math.pow(1 - p, 3)) * target);
       if (p < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -99,6 +100,22 @@
     { threshold: 0.6 }
   );
   $$(".count").forEach((el) => cio.observe(el));
+
+  /* ---- exhibits: a click opens the document in a viewer on the page.
+          The link itself points at the PDF, so it still works with no script,
+          and a modified click (new tab, new window) is left alone. ---- */
+  $$("[data-exhibit]").forEach((link) => {
+    const box = document.getElementById(link.dataset.exhibit);
+    if (!box || typeof box.showModal !== "function") return;
+    link.addEventListener("click", (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+      e.preventDefault();
+      box.showModal();
+    });
+    box.addEventListener("click", (e) => {
+      if (e.target === box || e.target.closest("[data-close]")) box.close();
+    });
+  });
 
   /* ---- year ---- */
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
