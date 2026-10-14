@@ -596,7 +596,9 @@ a.sechead__aside:hover { text-decoration: underline; text-underline-offset: 4px;
 .lang__note { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.12em; color: var(--tx3); line-height: 1.7; text-align: right; }
 
 /* ============ EXHIBITS — documents on file (profile) ============ */
-#exhibits { scroll-margin-top: 4.5rem; }
+#exhibits, .exhibit[id] { scroll-margin-top: 4.5rem; }
+.exhibit + .exhibit { margin-top: 2.6rem; padding-top: 2.6rem; border-top: 1px solid var(--line2); }
+.honor__what a { color: var(--up); font-weight: 600; text-underline-offset: 4px; }
 .exhibit { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.9rem; align-items: center; }
 .exhibit__doc { display: block; text-decoration: none; background: var(--bg3); border: 1px solid var(--line2); border-radius: var(--r2); padding: 0.6rem 0.6rem 0; transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s; }
 .exhibit__doc:active { transform: scale(0.985); }

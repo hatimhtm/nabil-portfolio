@@ -216,6 +216,7 @@
       ["PRMT", "NM-05 · Prometheus Trading", "prometheus.html"],
       ["PROF", "Profile and fundamentals", "profile.html"],
       ["CERT", "Exhibit A · the Bulenox certificate", "profile.html#exhibits"],
+      ["FIFA", "Exhibit B · the FIFA World Cup certificate", "profile.html#fifa-certificate"],
       ["MAIL", "Write to me", "mailto:mouzounn1@gmail.com"],
     ];
     let shown = [], at = 0;

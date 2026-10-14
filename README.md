@@ -30,7 +30,9 @@ Every fact follows Nabil's résumé.
 ## Exhibits
 
 `profile.html#exhibits` shows documents on file. Exhibit A is the Bulenox Qualification Program certificate
-(`assets/bulenox-qualification-50k.pdf`, with two JPG renders for the page). A click opens it in a viewer
+(`assets/bulenox-qualification-50k.pdf`, with two JPG renders for the page); Exhibit B is the FIFA World Cup 2026
+volunteer certificate (`assets/fifa-world-cup-2026-volunteer-certificate.pdf`, card id `fifa-certificate`, linked
+from the tearsheet on the home page). A click opens an exhibit in a viewer
 (a native `<dialog>`, wired in `app.js` by `data-exhibit="<dialog id>"`); the link itself points at the PDF,
 so it still works with no script, and a ⌘/ctrl-click opens the PDF in a new tab. To add an exhibit: copy the
 `.exhibit` block and its `<dialog>`, give the dialog a new id, and point `data-exhibit` at it.

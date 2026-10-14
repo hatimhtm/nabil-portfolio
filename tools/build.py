@@ -15,7 +15,7 @@ import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
-VERSION = "2.1"          # appended to the stylesheet and script addresses, so a release is never served stale
+VERSION = "2.2"          # appended to the stylesheet and script addresses, so a release is never served stale
 TOTAL = 8                # numbered pages in the report (the 404 page is not one of them)
 
 
