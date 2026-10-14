@@ -1,0 +1,100 @@
+file: signals.html
+nav: coverage
+page: 5
+title: NM-03 · Market Signals Toolkit · Nabil Mouzoun
+description: Case NM-03: the Python toolkit Nabil Mouzoun built to pull market data, compute moving averages and flag crossover signals, with a live demo chart.
+og_title: NM-03 · Market Signals Toolkit · Nabil Mouzoun
+og_description: Case NM-03: the Python toolkit Nabil Mouzoun built to pull market data, compute moving averages and flag crossover signals, with a live demo chart.
+scripts: app.js charts.js
+disclosure: <b>Case disclosure.</b> The chart on this page uses a synthetic price series that the browser generates, to show how the toolkit detects a crossover. It contains no market data, no track record and no investment advice.
+---
+
+    <section class="casehero">
+      <div class="wrap">
+        <p class="crumb reveal"><a href="work.html" data-nav>COVERAGE</a> / NM-03 · DATA &amp; MARKETS</p>
+        <h1 class="reveal">Market Signals Toolkit</h1>
+        <p class="casehero__sub reveal">Nabil is a finance major who writes Python on weekends. His toolkit pulls prices, computes moving averages and flags crossovers, and the chart below runs the same logic live in the browser.</p>
+        <div class="casehero__chips reveal">
+          <span class="chip">PYTHON · SQL</span>
+          <span class="chip">SELF-DIRECTED</span>
+          <span class="chip chip--green">▲ ACTIVE · BACKTESTING MODULE NEXT</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="metrics reveal">
+        <div class="metric"><div class="metric__v">50 / 200</div><div class="metric__k">Day moving averages</div></div>
+        <div class="metric"><div class="metric__v">100%</div><div class="metric__k">His own code, which he wrote and maintains</div></div>
+        <div class="metric"><div class="metric__v">LIVE <span class="up">▲</span></div><div class="metric__k">Working demo on this page: hover the chart</div></div>
+        <div class="metric"><div class="metric__v">NEXT</div><div class="metric__k">Backtesting module, to measure signal hit rates</div></div>
+      </div>
+
+      <div class="casebody">
+        <div class="casebody__main">
+          <h2 class="reveal"><span class="mono">1.0</span> Why a finance student codes</h2>
+          <p class="reveal">The analysts Nabil wants to work with pull their own data and clean it before they form a view. <strong>He decided to learn that as a student</strong>: he taught himself on weekends, alongside a full finance courseload and for no course credit, and this toolkit is what he built.</p>
+
+          <h2 class="reveal"><span class="mono">2.0</span> The logic, running live</h2>
+          <p class="reveal">The chart below runs the toolkit's crossover detector on a synthetic price series (the browser generates it, so the chart shows no real market data). The toolkit flags the moment the 50-day average crosses above the 200-day average, which traders call the <strong>golden cross</strong>; hover the chart to read the values.</p>
+
+          <div class="chartpanel reveal">
+            <div class="chartpanel__head">
+              <span class="chartpanel__title">SMA CROSSOVER DETECTOR · TOOLKIT LOGIC, SYNTHETIC SERIES</span>
+              <span class="chartpanel__note">ILLUSTRATIVE DEMO · NOT MARKET DATA · NOT ADVICE</span>
+            </div>
+            <div class="legend" aria-hidden="true">
+              <span class="legend__item"><i class="legend__chip" style="background:#5b8def"></i>PRICE</span>
+              <span class="legend__item"><i class="legend__chip" style="background:#bd8a2e"></i>SMA 50</span>
+              <span class="legend__item"><i class="legend__chip" style="background:#b4635b"></i>SMA 200</span>
+              <span class="legend__item"><i class="legend__chip" style="background:#19b57a"></i>SIGNAL</span>
+            </div>
+            <div class="chart" id="chart-signals"></div>
+          </div>
+
+          <h2 class="reveal"><span class="mono">3.0</span> Under the hood</h2>
+          <p class="reveal">He kept the core short and can explain each line of it:</p>
+          <div class="code reveal">
+            <div class="code__bar"><i></i><i></i><i></i><b>signals.py · core loop</b></div>
+            <pre><code><span class="c"># pull → clean → compute → flag</span>
+prices = <span class="k">pull</span>(ticker).<span class="k">clean</span>()
+sma50, sma200 = prices.<span class="k">rolling</span>(<span class="o">50</span>).mean(), prices.<span class="k">rolling</span>(<span class="o">200</span>).mean()
+
+cross = (sma50.shift(<span class="o">1</span>) &lt;= sma200.shift(<span class="o">1</span>)) &amp; (sma50 &gt; sma200)
+<span class="k">if</span> cross.any():
+    <span class="k">flag</span>(<span class="g">"GOLDEN CROSS ▲"</span>, date=cross.idxmax())   <span class="c"># same rule as the chart above</span></code></pre>
+          </div>
+
+          <h2 class="reveal"><span class="mono">4.0</span> Roadmap</h2>
+          <p class="reveal">The next release adds a <strong>backtesting module</strong>. It will measure how the flagged signals would have performed, so he can put a hit rate next to each one.</p>
+        </div>
+
+        <aside class="caseside">
+          <div class="factbox reveal">
+            <div class="factbox__head">CASE FILE · NM-03</div>
+            <dl>
+              <div><dt>PROJECT</dt><dd>Market Signals Toolkit</dd></div>
+              <div><dt>NM'S SEAT</dt><dd><b>Sole builder</b></dd></div>
+              <div><dt>STACK</dt><dd>Python (pandas) · SQL · price/econ data</dd></div>
+              <div><dt>DOES</dt><dd>Pulls series, computes SMAs, flags crossovers</dd></div>
+              <div><dt>NEXT</dt><dd>Backtesting &amp; signal hit-rate module</dd></div>
+              <div><dt>STATUS</dt><dd><span class="up">▲ Active · weekends</span></dd></div>
+            </dl>
+          </div>
+          <div class="factbox reveal">
+            <div class="factbox__head">SKILLS EVIDENCED</div>
+            <dl>
+              <div><dt>DATA</dt><dd>Acquisition, cleaning, time-series work</dd></div>
+              <div><dt>MARKETS</dt><dd>Reading technical signals, with a test for each</dd></div>
+              <div><dt>HABIT</dt><dd>Teaching himself and finishing what he starts</dd></div>
+            </dl>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <nav class="pn" aria-label="Case navigation">
+      <a href="designmall.html" data-nav><span class="mono">← PREV · NM-02</span><b>Design-Mall</b></a>
+      <a href="bridge.html" data-nav><span class="mono">NEXT CASE · NM-04 →</span><b>The Education Bridge</b></a>
+    </nav>
+

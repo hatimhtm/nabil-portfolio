@@ -2,91 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NM-03 · Market Signals Toolkit — Nabil Mouzoun</title>
-  <meta name="description" content="Case NM-03: the Python toolkit Nabil Mouzoun built to pull market data, compute moving averages, and flag crossover signals — with a live demo chart." />
-  <meta property="og:title" content="NM-03 · Market Signals Toolkit — Nabil Mouzoun" />
-  <meta property="og:description" content="Case NM-03: the Python toolkit Nabil Mouzoun built to pull market data, compute moving averages, and flag crossover signals — with a live demo chart." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>NM-03 · Market Signals Toolkit · Nabil Mouzoun</title>
+  <meta name="description" content="Case NM-03: the Python toolkit Nabil Mouzoun built to pull market data, compute moving averages and flag crossover signals, with a live demo chart." />
+  <meta name="theme-color" content="#f5f2ea" />
+  <meta property="og:title" content="NM-03 · Market Signals Toolkit · Nabil Mouzoun" />
+  <meta property="og:description" content="Case NM-03: the Python toolkit Nabil Mouzoun built to pull market data, compute moving averages and flag crossover signals, with a live demo chart." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/assets/og.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="/assets/og.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=2.0" />
   <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="8" fill="%230b1626"/><path d="M14 44 L26 30 L34 36 L50 18" fill="none" stroke="%2319b57a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>' />
+  <script>document.documentElement.classList.add("js");</script>
 </head>
-<body>
+<body class="">
+
+  <a class="skip" href="#main">Skip to the report</a>
+  <div class="progress" aria-hidden="true"><i></i></div>
 
   <div class="topbar">
-    <span><b>NM</b> · EQUITY RESEARCH — PERSONAL COVERAGE DESK</span>
-    <span>REPORT DATE · <span data-date>—</span></span>
+    <span><i class="live"></i><b>NM</b> · EQUITY RESEARCH<span class="topbar__long"> · PERSONAL COVERAGE DESK</span></span>
+    <span><span class="topbar__long">NEW YORK <span data-clock="America/New_York" data-clock-short>--:--</span> ET · </span><span data-date></span></span>
   </div>
 
-  <header class="nav">
+  <header class="nav" id="nav">
     <a class="nav__brand" href="index.html" data-nav>Mouzoun <span class="mono">NM <i class="nav__tick">▲</i></span></a>
+    <span class="nav__quote" aria-hidden="true"><b>STRONG HIRE</b> <i class="up">▲</i><span class="nav__quote-more"> · GPA 3.93 · DEAN'S LIST ×4</span></span>
     <nav class="nav__links" aria-label="Primary">
-      <a href="index.html" data-nav>Overview</a>
-      <a href="work.html" data-nav aria-current="page">Coverage</a>
-      <a href="profile.html" data-nav>Profile</a>
+      <a href="index.html" data-nav><em>01</em>Overview</a>
+      <a href="work.html" data-nav aria-current="page"><em>02</em>Coverage</a>
+      <a href="profile.html" data-nav><em>03</em>Profile</a>
     </nav>
-    <a class="nav__cta" href="mailto:mouzounn1@gmail.com">Request the memo</a>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+    <button class="nav__cmd" type="button" data-cmd-open aria-label="Open the command line">GO TO<kbd>/</kbd></button>
+    <a class="nav__cta" href="mailto:mouzounn1@gmail.com">Email Nabil</a>
   </header>
 
-  <div class="menu" id="menu" aria-hidden="true">
-    <nav class="menu__links" aria-label="Menu">
-      <a href="index.html" data-nav><em>P.1</em> Overview</a>
-      <a href="work.html" data-nav><em>P.2</em> Coverage</a>
-      <a href="profile.html" data-nav><em>P.8</em> Profile</a>
-      <a href="mailto:mouzounn1@gmail.com"><em>✉</em> mouzounn1@gmail.com</a>
-    </nav>
-    <p class="menu__foot mono">NM · EQUITY RESEARCH — NEW YORK</p>
-  </div>
+  <main class="page" id="main">
 
-  <main class="page">
 
     <section class="casehero">
       <div class="wrap">
         <p class="crumb reveal"><a href="work.html" data-nav>COVERAGE</a> / NM-03 · DATA &amp; MARKETS</p>
         <h1 class="reveal">Market Signals Toolkit</h1>
-        <p class="casehero__sub reveal">A finance major who spends weekends writing Python.
-        The toolkit pulls prices, computes moving averages, and flags crossovers — and the
-        chart below runs its exact logic, live in your browser.</p>
+        <p class="casehero__sub reveal">Nabil is a finance major who writes Python on weekends. His toolkit pulls prices, computes moving averages and flags crossovers, and the chart below runs the same logic live in the browser.</p>
         <div class="casehero__chips reveal">
           <span class="chip">PYTHON · SQL</span>
           <span class="chip">SELF-DIRECTED</span>
-          <span class="chip chip--green">▲ ACTIVE — BACKTESTING MODULE NEXT</span>
+          <span class="chip chip--green">▲ ACTIVE · BACKTESTING MODULE NEXT</span>
         </div>
       </div>
     </section>
 
     <div class="wrap">
       <div class="metrics reveal">
-        <div class="metric"><div class="metric__v">50 / 200</div><div class="metric__k">Day moving averages — the classic cross</div></div>
-        <div class="metric"><div class="metric__v">100%</div><div class="metric__k">His own code — written, understood, maintained</div></div>
-        <div class="metric"><div class="metric__v">LIVE <span class="up">▲</span></div><div class="metric__k">Working demo on this page — hover the chart</div></div>
-        <div class="metric"><div class="metric__v">NEXT</div><div class="metric__k">Backtesting module — measuring signal hit-rates</div></div>
+        <div class="metric"><div class="metric__v">50 / 200</div><div class="metric__k">Day moving averages</div></div>
+        <div class="metric"><div class="metric__v">100%</div><div class="metric__k">His own code, which he wrote and maintains</div></div>
+        <div class="metric"><div class="metric__v">LIVE <span class="up">▲</span></div><div class="metric__k">Working demo on this page: hover the chart</div></div>
+        <div class="metric"><div class="metric__v">NEXT</div><div class="metric__k">Backtesting module, to measure signal hit rates</div></div>
       </div>
 
       <div class="casebody">
         <div class="casebody__main">
           <h2 class="reveal"><span class="mono">1.0</span> Why a finance student codes</h2>
-          <p class="reveal">The analysts NM wants to work beside don't type numbers into Excel
-          by hand. They pull data, clean it, and let it argue with them. <strong>He decided to
-          learn that now rather than wish he had later</strong> — on weekends, next to a full
-          finance courseload, with no course credit attached. The toolkit is the receipt.</p>
+          <p class="reveal">The analysts Nabil wants to work with pull their own data and clean it before they form a view. <strong>He decided to learn that as a student</strong>: he taught himself on weekends, alongside a full finance courseload and for no course credit, and this toolkit is what he built.</p>
 
           <h2 class="reveal"><span class="mono">2.0</span> The logic, running live</h2>
-          <p class="reveal">Below is the toolkit's crossover detector on a synthetic price
-          series — <em>generated in this page</em>, so no market data is misrepresented. When
-          the 50-day average crosses above the 200-day, the toolkit flags it: the
-          <strong>golden cross</strong>. Hover anywhere for the values.</p>
+          <p class="reveal">The chart below runs the toolkit's crossover detector on a synthetic price series (the browser generates it, so the chart shows no real market data). The toolkit flags the moment the 50-day average crosses above the 200-day average, which traders call the <strong>golden cross</strong>; hover the chart to read the values.</p>
 
           <div class="chartpanel reveal">
             <div class="chartpanel__head">
-              <span class="chartpanel__title">SMA CROSSOVER DETECTOR — TOOLKIT LOGIC, SYNTHETIC SERIES</span>
+              <span class="chartpanel__title">SMA CROSSOVER DETECTOR · TOOLKIT LOGIC, SYNTHETIC SERIES</span>
               <span class="chartpanel__note">ILLUSTRATIVE DEMO · NOT MARKET DATA · NOT ADVICE</span>
             </div>
             <div class="legend" aria-hidden="true">
@@ -99,10 +88,9 @@
           </div>
 
           <h2 class="reveal"><span class="mono">3.0</span> Under the hood</h2>
-          <p class="reveal">The core is deliberately compact — every line accountable, nothing
-          copy-pasted from a tutorial he couldn't defend:</p>
+          <p class="reveal">He kept the core short and can explain each line of it:</p>
           <div class="code reveal">
-            <div class="code__bar"><i></i><i></i><i></i><b>signals.py — core loop</b></div>
+            <div class="code__bar"><i></i><i></i><i></i><b>signals.py · core loop</b></div>
             <pre><code><span class="c"># pull → clean → compute → flag</span>
 prices = <span class="k">pull</span>(ticker).<span class="k">clean</span>()
 sma50, sma200 = prices.<span class="k">rolling</span>(<span class="o">50</span>).mean(), prices.<span class="k">rolling</span>(<span class="o">200</span>).mean()
@@ -113,33 +101,27 @@ cross = (sma50.shift(<span class="o">1</span>) &lt;= sma200.shift(<span class="o
           </div>
 
           <h2 class="reveal"><span class="mono">4.0</span> Roadmap</h2>
-          <p class="reveal">Next release adds a <strong>backtesting module</strong> — measuring
-          how the flagged signals would actually have performed, because a signal without a
-          hit-rate is an opinion. That instinct, applied to his own tool, is the point of the
-          whole exercise.</p>
-          <blockquote class="pull">“I built it, I understand every line, and it runs every
-          week — the toolkit does the first read of the market before I've poured the
-          coffee.”</blockquote>
+          <p class="reveal">The next release adds a <strong>backtesting module</strong>. It will measure how the flagged signals would have performed, so he can put a hit rate next to each one.</p>
         </div>
 
         <aside class="caseside">
           <div class="factbox reveal">
-            <div class="factbox__head">CASE FILE — NM-03</div>
+            <div class="factbox__head">CASE FILE · NM-03</div>
             <dl>
               <div><dt>PROJECT</dt><dd>Market Signals Toolkit</dd></div>
-              <div><dt>NM'S SEAT</dt><dd><b>Sole builder</b> — every line his</dd></div>
+              <div><dt>NM'S SEAT</dt><dd><b>Sole builder</b></dd></div>
               <div><dt>STACK</dt><dd>Python (pandas) · SQL · price/econ data</dd></div>
               <div><dt>DOES</dt><dd>Pulls series, computes SMAs, flags crossovers</dd></div>
               <div><dt>NEXT</dt><dd>Backtesting &amp; signal hit-rate module</dd></div>
-              <div><dt>STATUS</dt><dd><span class="up">▲ Active — weekends, ongoing</span></dd></div>
+              <div><dt>STATUS</dt><dd><span class="up">▲ Active · weekends</span></dd></div>
             </dl>
           </div>
           <div class="factbox reveal">
             <div class="factbox__head">SKILLS EVIDENCED</div>
             <dl>
               <div><dt>DATA</dt><dd>Acquisition, cleaning, time-series work</dd></div>
-              <div><dt>MARKETS</dt><dd>Technical-signal literacy, skeptically held</dd></div>
-              <div><dt>HABIT</dt><dd>Self-directed learning that ships</dd></div>
+              <div><dt>MARKETS</dt><dd>Reading technical signals, with a test for each</dd></div>
+              <div><dt>HABIT</dt><dd>Teaching himself and finishing what he starts</dd></div>
             </dl>
           </div>
         </aside>
@@ -154,9 +136,7 @@ cross = (sma50.shift(<span class="o">1</span>) &lt;= sma200.shift(<span class="o
   </main>
 
   <footer class="foot">
-    <p class="foot__disc"><b>Case disclosure.</b> The chart on this page runs on a synthetic,
-    deterministic series generated in the browser — it demonstrates the toolkit's detection
-    logic and is not market data, a track record, or investment advice.</p>
+    <p class="foot__disc"><b>Case disclosure.</b> The chart on this page uses a synthetic price series that the browser generates, to show how the toolkit detects a crossover. It contains no market data, no track record and no investment advice.</p>
     <div class="foot__grid">
       <nav class="foot__nav" aria-label="Footer">
         <a href="index.html" data-nav>OVERVIEW</a>
@@ -168,7 +148,19 @@ cross = (sma50.shift(<span class="o">1</span>) &lt;= sma200.shift(<span class="o
     </div>
   </footer>
 
-  <script src="app.js"></script>
-  <script src="charts.js"></script>
+  <nav class="tabbar" aria-label="Sections">
+    <a href="index.html" data-nav><em>01</em>Overview</a>
+    <a href="work.html" data-nav aria-current="page"><em>02</em>Coverage</a>
+    <a href="profile.html" data-nav><em>03</em>Profile</a>
+    <a href="mailto:mouzounn1@gmail.com"><em>04</em>Contact</a>
+  </nav>
+
+  <dialog class="cmd" id="cmd" aria-label="Command line: type a ticker to go there">
+    <div class="cmd__in"><span>NM&nbsp;&gt;</span><input type="text" id="cmd-in" placeholder="TYPE A TICKER OR A PAGE" autocomplete="off" spellcheck="false" aria-label="Where to" /><kbd>ESC</kbd></div>
+    <ul id="cmd-list" role="listbox"></ul>
+  </dialog>
+
+  <script src="app.js?v=2.0" defer></script>
+  <script src="charts.js?v=2.0" defer></script>
 </body>
 </html>
